@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} Signup {% endblock page_title %}
+
+{% block content %}
+    Seja bem-vindo, {{ request.user.username }}
+{% endblock content %}
