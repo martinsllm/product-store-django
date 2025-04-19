@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class Category(models.Model):
@@ -9,15 +10,22 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(
         blank=False, null=False, default=0)
     buy_price = models.FloatField()
     sale_price = models.FloatField()
+    slug = models.SlugField(unique=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        return super().save(*args, **kwargs)
 
 
 class File(models.Model):

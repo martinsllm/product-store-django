@@ -1,5 +1,5 @@
 from django import forms
-from store.models import Category
+from store.models import Category, Product
 
 
 class UploadFileForm(forms.Form):
@@ -10,3 +10,10 @@ class UploadFileForm(forms.Form):
     quantity = forms.IntegerField()
     buy_price = forms.FloatField()
     sale_price = forms.FloatField()
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = "__all__"
+        exclude = ['slug']
