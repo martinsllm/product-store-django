@@ -4,9 +4,9 @@ from store.models import Category
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()
-    nome = forms.CharField(max_length=50)
-    categoria = forms.ChoiceField(
+    name = forms.CharField(max_length=50)
+    category = forms.ChoiceField(
         choices=[(category.id, category.title) for category in Category.objects.all()])
-    quantidade = forms.IntegerField()
-    preco_compra = forms.FloatField()
-    preco_venda = forms.FloatField()
+    quantity = forms.IntegerField()
+    buy_price = forms.FloatField()
+    sale_price = forms.FloatField()

@@ -4,7 +4,7 @@
 {% block page_title %} New Product {% endblock page_title %}
 
 {% block content %}
-    <form method="POST" url="{% url 'add_product' %}">
+    <form method="POST" url="{% url 'add_product' %}" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form|crispy }}

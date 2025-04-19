@@ -10,16 +10,16 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
-    categoria = models.ForeignKey(Category, on_delete=models.CASCADE)
-    quantidade = models.PositiveIntegerField(
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(
         blank=False, null=False, default=0)
-    preco_compra = models.FloatField()
-    preco_venda = models.FloatField()
+    buy_price = models.FloatField()
+    sale_price = models.FloatField()
 
     def __str__(self):
-        return self.nome
+        return self.name
 
 
-class Image(models.Model):
-    image = models.ImageField(upload_to="imgs")
-    produto = models.ForeignKey(Product, on_delete=models.CASCADE)
+class File(models.Model):
+    image = models.ImageField(upload_to="img")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
