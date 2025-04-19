@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load filters %}
+
+{% block page_title %} Products {% endblock page_title %}
+
+{% block content %}
+
+<a href="{% url 'add_product' %}" class="btn btn-success mb-3">New Product</a>
+
+<div class="row"> 
+    {% for product in products %}
+        <div class="col-md mb-3">
+            <div style="width: 18rem" class="card" style="width: 18rem;">
+                {% if product|get_first_image %}
+                    <img width="100%" class="card-img-top" src="{{product|get_first_image}}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <span class="badge bg-info">{{product.category}}</span>
+                    <br>
+                    <br>
+                    <a href="" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}  
+    
+{% endblock content %}
