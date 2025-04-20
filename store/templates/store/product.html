@@ -4,5 +4,12 @@
 {% block page_title %} {{product.name}} {% endblock page_title %}
 
 {% block content %}
-        {{ form|crispy }} 
+        <form method="POST" url="{% url 'product_update' product.slug %}">
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a class="btn btn-danger">Excluir</a>
+        </form>
 {% endblock content %}
